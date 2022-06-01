@@ -1,5 +1,7 @@
 "use strict";
 
+const btns = document.querySelectorAll(".btn");
+
 let playerScore = 0,
   computerScore = 0,
   drawScore = 0;
@@ -37,18 +39,18 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    // let playerSelection = "ROCK".toLowerCase();
-    let playerSelection = prompt("Enter your choice[rock, paper or scissors]");
+// ///////////////////////////////////////////////////////////////////////////////////
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    // console.log(e.target.id);
+    let playerSelection = e.target.id;
     let computerSelection = computerPlay();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
-  }
+    console.log(playRound(playerSelection, computerSelection));
+  });
+});
 
-  console.log(
-    `Player score: ${playerScore} - Computer score: ${computerScore} - Draws: ${drawScore}`
-  );
-}
+// function game() {
+// }
 
-game();
+// game();
