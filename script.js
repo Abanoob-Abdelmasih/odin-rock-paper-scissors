@@ -30,9 +30,12 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function game() {
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = "ROCK".toLowerCase();
+    let computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+}
 
-
-
-const playerSelection = "ROCK".toLowerCase();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+game();
