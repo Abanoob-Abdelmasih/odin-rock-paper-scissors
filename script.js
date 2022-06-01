@@ -9,6 +9,8 @@ const popupText = document.querySelector(".popup-text");
 const playerScoreDisplay = document.querySelector(".player-score-span");
 const computerScoreDisplay = document.querySelector(".computer-score-span");
 
+const againBtn = document.querySelector(".popup-again-button");
+
 let playerScore = 0,
   computerScore = 0,
   drawScore = 0;
@@ -17,7 +19,7 @@ let playerScore = 0,
 function computerPlay() {
   const randomNumber = Math.floor(Math.random() * 3);
   const computerChoices = ["scissors", "rock", "paper"];
-  console.log(`Computer choice: ${computerChoices[randomNumber]}`);
+  // console.log(`Computer choice: ${computerChoices[randomNumber]}`);
   return computerChoices[randomNumber];
 }
 
@@ -34,7 +36,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     playerScoreDisplay.textContent = ++playerScore;
     if (playerScore === 5) {
-      gameEnds(playerSelection);
+      gameEnds("Player");
     }
     return `${playerSelection} beats ${computerSelection} player win`;
   }
@@ -46,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     computerScoreDisplay.textContent = ++computerScore;
     if (computerScore === 5) {
-      gameEnds(computerSelection);
+      gameEnds("Computer");
     }
     return `${computerSelection} beats ${playerSelection} player lose`;
   }
@@ -54,9 +56,9 @@ function playRound(playerSelection, computerSelection) {
 
 // ///////////////////////////////////////////////////////////////////////////////////
 
-function gameEnds(player) {
+function gameEnds(user) {
   backgroundPopup.classList.remove("hidden");
-  if (player === playerSelection) {
+  if (user === "Player") {
     popupText.textContent = "Player Won";
   } else {
     popupText.textContent = "Computer Won";
@@ -73,4 +75,8 @@ btns.forEach((btn) => {
   });
 });
 
+// ////////////////////////////////////////////////////////////////////////////////////
 
+againBtn.addEventListener("click", () => {
+  location.reload();
+});
